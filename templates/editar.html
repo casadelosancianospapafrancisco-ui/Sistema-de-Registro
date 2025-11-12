@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Registro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Editar Registro de Víveres</h1>
+    </header>
+
+    <section>
+        <form action="/actualizar/{{ registro[0] }}" method="POST">
+            <input type="text" name="nombre" value="{{ registro[1] }}" required>
+            <label>Fecha de Entrega:</label>
+            <input type="date" name="fecha_entrega" value="{{ registro[2] }}" required>
+            <input type="text" name="producto" value="{{ registro[3] }}" required>
+            <input type="number" name="cantidad" value="{{ registro[4] }}" required>
+            <label>Fecha de Vencimiento:</label>
+            <input type="date" name="fecha_vencimiento" value="{{ registro[5] }}" required>
+            <input type="text" name="bienes" value="{{ registro[6] }}" required>
+            <label>Estado del producto:</label>
+            <select name="utilidad" required>
+                <option value="Buen estado" {% if registro[7] == 'Buen estado' %}selected{% endif %}>Buen estado</option>
+                <option value="Mal estado" {% if registro[7] == 'Mal estado' %}selected{% endif %}>Mal estado</option>
+            </select>
+            <button type="submit">Actualizar</button>
+        </form>
+        <a href="{{ url_for('inicio') }}">Cancelar</a>
+    </section>
+</body>
+</html>

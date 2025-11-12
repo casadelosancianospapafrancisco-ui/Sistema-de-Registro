@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Residentes - Asilo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Registro de Residentes</h1>
+        <nav>
+            <a href="{{ url_for('inicio') }}">🏠 Inicio</a>
+            <a href="{{ url_for('agregar_residente') }}">➕ Nuevo Registro</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block contenido %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2025 Proyecto Integrador - Universidad Rafael Landívar</p>
+    </footer>
+
+</body>
+</html>

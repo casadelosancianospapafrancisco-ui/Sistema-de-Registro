@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<section>
+    <h2>Agregar Nuevo Residente</h2>
+    <form method="POST" action="{{ url_for('agregar_residente') }}">
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required>
+
+        <label>Edad:</label>
+        <input type="number" name="edad" required>
+
+        <label>Condición médica:</label>
+        <input type="text" name="condicion" required>
+
+        <label>Contacto familiar:</label>
+        <input type="text" name="contacto" required>
+
+        <button type="submit">Guardar</button>
+        <a href="{{ url_for('inicio') }}">Cancelar</a>
+    </form>
+</section>
+{% endblock %}
