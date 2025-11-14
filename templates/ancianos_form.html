@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ action }} Anciano</h2>
+
+<form method="POST">
+  <label>Nombre del anciano</label>
+  <input type="text" name="nombre" value="{{ anciano['nombre'] if anciano else '' }}" required>
+
+  <label>Fecha de ingreso</label>
+  <input type="date" name="fecha_ingreso" value="{{ anciano['fecha_ingreso'] if anciano else '' }}" required>
+
+  <label>Edad</label>
+  <input type="number" name="edad" value="{{ anciano['edad'] if anciano else '' }}">
+
+  <label>Observaciones</label>
+  <textarea name="observaciones">{{ anciano['observaciones'] if anciano else '' }}</textarea>
+
+  <button type="submit" class="btn guardar">{{ action }}</button>
+  <a class="btn cancelar" href="{{ url_for('ancianos_list') }}">Cancelar</a>
+</form>
+{% endblock %}

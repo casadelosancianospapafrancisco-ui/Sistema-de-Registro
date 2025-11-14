@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Ancianos Registrados</h2>
+
+{% if ancianos %}
+<table>
+  <thead>
+    <tr><th>ID</th><th>Nombre</th><th>Fecha ingreso</th><th>Edad</th><th>Observaciones</th><th>Acciones</th></tr>
+  </thead>
+  <tbody>
+    {% for a in ancianos %}
+    <tr>
+      <td>{{ a['id'] }}</td>
+      <td>{{ a['nombre'] }}</td>
+      <td>{{ a['fecha_ingreso'] }}</td>
+      <td>{{ a['edad'] or '—' }}</td>
+      <td>{{ a['observaciones'] or '—' }}</td>
+      <td>
+        <a class="btn editar" href="{{ url_for('ancianos_edit', anc_id=a['id']) }}">Editar</a>
+        <form method="POST" action="{{ url_for('ancianos_delete', anc_id=a['id']) }}" style="display:inline" onsubmit="return confirm('Eliminar registro?');">
+          <button class="btn borrar" type="submit">Borrar</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No hay ancianos registrados aún.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mb-4">{{ action }} Registro de Víveres</h2>
+
+<form method="POST">
+  <label>Nombre del donante</label>
+  <input type="text" name="nombre_donante" value="{{ registro['nombre_donante'] if registro else '' }}">
+
+  <label>Fecha de ingreso (víveres)</label>
+  <input type="date" name="fecha_ingreso" value="{{ registro['fecha_ingreso'] if registro else '' }}">
+
+  <label>Producto</label>
+  <input type="text" name="producto" value="{{ registro['producto'] if registro else '' }}" required>
+
+  <label>Cantidad</label>
+  <input type="number" name="cantidad" value="{{ registro['cantidad'] if registro else 0 }}" required>
+
+  <label>Fecha de vencimiento</label>
+  <input type="date" name="fecha_vencimiento" value="{{ registro['fecha_vencimiento'] if registro else '' }}">
+
+  <label>Tipo de bienes</label>
+  <input type="text" name="bienes" value="{{ registro['bienes'] if registro else '' }}">
+
+  <label>Estado</label>
+  <div class="checkboxes">
+    <label><input type="checkbox" name="buen_estado" value="1" {% if registro and registro['buen_estado']==1 %}checked{% endif %}> Buen estado</label>
+    <label><input type="checkbox" name="mal_estado" value="1" {% if registro and registro['mal_estado']==1 %}checked{% endif %}> Mal estado</label>
+  </div>
+
+  <div class="btn-group">
+      <button type="submit" class="btn guardar">{{ action }}</button>
+      <a class="btn cancelar" href="{{ url_for('viveres_list') }}">Cancelar</a>
+  </div>
+</form>
+{% endblock %}

@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Iniciar sesión</title>
+  <meta charset="utf-8">
+  <title>Login - Sistema Asilo</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <section>
-    <h2>Iniciar Sesión</h2>
-    {% if error %}
-      <p style="color:red;">{{ error }}</p>
-    {% endif %}
-    <form method="POST" action="/login">
-      <label>Usuario:</label>
+  <section class="centered">
+    <h2>Iniciar sesión</h2>
+    <form method="POST">
+      <label>Usuario</label>
       <input type="text" name="usuario" required>
-
-      <label>Contraseña:</label>
+      <label>Contraseña</label>
       <input type="password" name="contrasena" required>
-
-      <button type="submit">Ingresar</button>
+      <button type="submit">Entrar</button>
     </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
   </section>
 </body>
 </html>

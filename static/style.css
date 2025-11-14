@@ -1,232 +1,213 @@
-/* ======== ESTILOS GENERALES ======== */
+/* =========================================================
+   RESET & BASICS
+   ========================================================= */
+* {
+    box-sizing: border-box;
+}
+
 body {
-  font-family: "Segoe UI", Roboto, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #fff9fe;
-  color: #333333;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    margin: 0;
+    background: #fff9fe;
+    color: #333;
 }
 
-/* ======== ENCABEZADO ======== */
 header {
-  background-color: #fbaaff;
-  color: white;
-  text-align: center;
-  padding: 18px 0;
-  font-size: 1.3em; /* 🔹 más pequeño y equilibrado */
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background: #fbaaff;
+    padding: 18px 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-/* ======== CONTENEDOR PRINCIPAL ======== */
-section {
-  width: 90%;
-  max-width: 950px;
-  margin: 25px auto;
-  background-color: white;
-  padding: 25px 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+header h1 {
+    margin: 0;
+    font-size: 1.2rem;
 }
 
-/* ======== TÍTULOS ======== */
-h1, h2, h3 {
-  color: #333333;
-  margin-bottom: 14px;
-  border-bottom: 2px solid #fbaaff;
-  padding-bottom: 6px;
+nav a {
+    color: white;
+    margin-left: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
 }
 
-/* ======== FORMULARIO ======== */
-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+nav a.logout-link {
+    background: #f06b6b;
 }
 
-label {
-  font-weight: 600;
-  color: #333333;
-  width: 100%;
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+main {
+    width: 92%;
+    max-width: 1100px;
+    margin: 22px auto;
+    background: #fff;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
 }
 
-input, select {
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1em;
-  width: 100%;
+.centered {
+    max-width: 600px;
+    margin: 20px auto;
 }
 
-input:focus, select:focus {
-  outline: none;
-  border-color: #f27bff;
-  box-shadow: 0 0 5px #fbaaff;
+
+/* =========================================================
+   FORMULARIOS
+   ========================================================= */
+form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
 }
 
-/* ======== BOTONES ======== */
-button, a {
-  background-color: #fbaaff;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.2s ease;
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
 }
 
-button:hover, a:hover {
-  background-color: #f27bff;
-  transform: scale(1.03);
+textarea {
+    min-height: 90px;
+    resize: vertical;
 }
 
-/* ======== BOTONES ESPECÍFICOS ======== */
-.btn-editar {
-  background-color: #6cc070;
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    font-size: 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    margin-top: 12px;
 }
 
-.btn-editar:hover {
-  background-color: #57a85b;
+.btn.guardar {
+    background: #4CAF50;
 }
 
-.btn-borrar {
-  background-color: #f06b6b;
+.btn.editar {
+    background: #2196F3;
 }
 
-.btn-borrar:hover {
-  background-color: #d9534f;
+.btn.borrar {
+    background: #f44336;
 }
 
-/* ======== TABLA DE REGISTROS ======== */
+.btn.cancelar {
+    background: #777;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   TABLAS
+   ========================================================= */
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  table-layout: auto;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 14px;
 }
 
-th, td {
-  border: 1px solid #eee;
-  padding: 10px 8px;
-  text-align: center; 
-  vertical-align: middle;
-  font-size: 0.95em;
+th,
+td {
+    border: 1px solid #eee;
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 0.95rem;
 }
 
 th {
-  background-color: #fbaaff;
-  color: white;
-  font-weight: 600;
-}
-
-td {
-  word-wrap: break-word;
-}
-
-td:nth-child(3),
-td:nth-child(6) {
-  white-space: nowrap;
-}
-
-tr:nth-child(even) {
-  background-color: #fdf2ff;
-}
-
-td.acciones {
-  text-align: center;
-  white-space: nowrap;
-}
-
-td.acciones a {
-  display: inline-block;
-  margin: 3px 5px;
+    background: #fdf2ff;
+    color: #333;
 }
 
 
-/* ======== PIE DE PÁGINA ======== */
-footer {
-  text-align: center;
-  margin-top: 25px;
-  color: #777;
-  font-size: 0.9em;
-  padding-bottom: 15px;
+/* =========================================================
+   FLASH MESSAGES
+   ========================================================= */
+.flash {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 12px;
 }
 
-/* ======== ALERTAS O MENSAJES ======== */
-.alert {
-  background-color: #fdf2ff;
-  border-left: 5px solid #fbaaff;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 15px;
-  font-size: 0.95em;
-}
-/* ======== FORMULARIO DE EDICIÓN ======== */
-form {
-  max-width: 750px;
-  margin: 40px auto;
-  background-color: #fff;
-  padding: 25px 30px;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.flash.success {
+    background: #e6ffef;
+    border-left: 6px solid #57a85b;
 }
 
-form h2 {
-  text-align: center;
-  color: #333333;
-  margin-bottom: 20px;
+.flash.error {
+    background: #ffecec;
+    border-left: 6px solid #f06b6b;
 }
 
-form label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #555;
+.flash.info {
+    background: #f0f6ff;
+    border-left: 6px solid #3b82f6;
 }
 
-form input, 
-form select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  font-size: 1em;
+
+/* =========================================================
+   MISC / HELPERS
+   ========================================================= */
+.menu-grid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 10px;
 }
 
-form button {
-  display: block;
-  width: 100%;
-  background-color: #fbaaff;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-form button:hover {
-  background-color: #e68fe8;
-}
-
-.btn-logout-abajo {
+.card {
     display: inline-block;
-    background-color: #f06b6b;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 6px;
+    padding: 16px;
+    border-radius: 10px;
+    background: #fdf2ff;
     text-decoration: none;
-    font-weight: 600;
-    margin-top: 15px;
-    transition: all 0.2s ease;
+    color: #333;
+    font-weight: 700;
 }
 
-.btn-logout-abajo:hover {
-    background-color: #d9534f;
-    transform: scale(1.05);
+.checkboxes label {
+    display: inline-block;
+    margin-right: 12px;
+}
+/* Igualar botones <a> y <button> */
+.btn,
+.btn:link,
+.btn:visited {
+    display: inline-block;
+    padding: 10px 16px !important;
+    font-size: 15px !important;
+    line-height: 1 !important;
+}
+
+button.btn {
+    height: auto;
 }

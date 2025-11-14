@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Residentes - Asilo</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="utf-8">
+  <title>Sistema Asilo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+  <header>
+    <h1>Casa de los Ancianos Papa Francisco</h1>
+    <nav>
+      <a href="{{ url_for('home') }}">Inicio</a>
+      <a href="{{ url_for('ancianos_list') }}">Ancianos</a>
+      <a href="{{ url_for('ancianos_add') }}">Agregar Anciano</a>
+      <a href="{{ url_for('viveres_list') }}">Víveres</a>
+      <a href="{{ url_for('viveres_add') }}">Agregar Víveres</a>
+      <a href="{{ url_for('logout') }}" class="logout-link">Cerrar sesión</a>
+    </nav>
+  </header>
 
-    <header>
-        <h1>Registro de Residentes</h1>
-        <nav>
-            <a href="{{ url_for('inicio') }}">🏠 Inicio</a>
-            <a href="{{ url_for('agregar_residente') }}">➕ Nuevo Registro</a>
-        </nav>
-    </header>
+  <main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
 
-    <main>
-        {% block contenido %}
-        {% endblock %}
-    </main>
+    {% block content %}{% endblock %}
+  </main>
 
-    <footer>
-        <p>© 2025 Proyecto Integrador - Universidad Rafael Landívar</p>
-    </footer>
-
+  <footer>
+    <p>Desarrollado para Casa de los Ancianos Papa Francisco — Proyecto Universitario</p>
+  </footer>
 </body>
 </html>

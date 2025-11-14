@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Registros de Víveres</h2>
+
+<a href="{{ url_for('viveres_add') }}" class="btn guardar">Agregar Víveres</a>
+
+{% if datos %}
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Donante</th>
+      <th>Fecha ingreso</th>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Vencimiento</th>
+      <th>Saldo</th>
+      <th>Bienes</th>
+      <th>Buen estado</th>
+      <th>Mal estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for d in datos %}
+    <tr>
+      <td>{{ d['id'] }}</td>
+      <td>{{ d['nombre_donante'] or '—' }}</td>
+      <td>{{ d['fecha_ingreso'] or '—' }}</td>
+      <td>{{ d['producto'] or '—' }}</td>
+      <td>{{ d['cantidad'] }}</td>
+      <td>{{ d['fecha_vencimiento'] or '—' }}</td>
+      <td>{{ d['saldo'] }}</td>
+      <td>{{ d['bienes'] or '—' }}</td>
+      <td>{{ 'Sí' if d['buen_estado']==1 else 'No' }}</td>
+      <td>{{ 'Sí' if d['mal_estado']==1 else 'No' }}</td>
+      <td>
+        <a class="btn editar" href="{{ url_for('viveres_edit', vid=d['id']) }}">Editar</a>
+        <form method="POST" action="{{ url_for('viveres_delete', vid=d['id']) }}" style="display:inline" onsubmit="return confirm('Eliminar registro?');">
+          <button class="btn borrar" type="submit">Borrar</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No hay registros de víveres aún.</p>
+{% endif %}
+
+{% endblock %}
